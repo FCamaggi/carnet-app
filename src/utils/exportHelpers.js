@@ -28,29 +28,53 @@ export async function downloadAsPNG(elementId, filename = 'carnet') {
         // Convertir canvas a blob
         const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png', 1.0));
         
-        // Detectar si es móvil y si soporta Web Share API
-        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-        const canShare = navigator.canShare && navigator.canShare({ files: [new File([blob], 'test.png', { type: 'image/png' })] });
-        
-        if (isMobile && canShare) {
-            // En móviles: usar Web Share API para compartir/guardar
-            const file = new File([blob], `${filename}.png`, { type: 'image/png' });
+        // Crear el archivo
+        const file = new File([blob], `${filename}.png`, { 
+            type: 'image/png',
+            lastModified: Date.now()
+        });
+
+        // Intentar compartir si el navegador lo soporta
+        if (navigator.share) {
             try {
+                // Intentar compartir directamente
                 await navigator.share({
                     files: [file],
-                    title: 'Mi Carnet',
-                    text: 'Carnet de Camaggi Games'
+                    title: 'Mi Carnet - Camaggi Games',
+                    text: 'Mi carnet para Camaggi Games'
                 });
+                return; // Éxito, salir
             } catch (shareError) {
-                // Si el usuario cancela el share, hacer download tradicional
-                if (shareError.name !== 'AbortError') {
-                    fallbackDownload(blob, filename);
+                // Si el usuario cancela, salir sin hacer nada
+                if (shareError.name === 'AbortError') {
+                    return;
                 }
+                // Si hay error de tipo NotSupportedError o TypeError, intentar sin archivos
+                if (shareError.name === 'NotSupportedError' || shareError.name === 'TypeError') {
+                    try {
+                        // Algunos navegadores no soportan compartir archivos, intentar con URL
+                        const url = URL.createObjectURL(blob);
+                        await navigator.share({
+                            title: 'Mi Carnet - Camaggi Games',
+                            text: 'Descarga mi carnet para Camaggi Games',
+                            url: url
+                        });
+                        URL.revokeObjectURL(url);
+                        return;
+                    } catch (urlShareError) {
+                        if (urlShareError.name === 'AbortError') {
+                            return;
+                        }
+                        console.log('Share con URL también falló:', urlShareError);
+                    }
+                }
+                console.log('Error al compartir:', shareError.name, shareError.message);
             }
-        } else {
-            // En desktop o si no soporta share: descarga tradicional
-            fallbackDownload(blob, filename);
         }
+        
+        // Fallback: descarga tradicional
+        console.log('Usando descarga tradicional');
+        fallbackDownload(blob, filename);
     } catch (error) {
         console.error('Error al exportar:', error);
         alert('Error al descargar la imagen');

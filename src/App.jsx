@@ -163,8 +163,8 @@ function App() {
                     : 'bg-gray-300 cursor-not-allowed'
                 }`}
               >
-                {/iPhone|iPad|iPod|Android/i.test(navigator.userAgent) 
-                  ? '📤 Compartir Carnet' 
+                {/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
+                  ? '📤 Compartir Carnet'
                   : '📥 Descargar PNG'}
               </button>
 
