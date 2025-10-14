@@ -18,12 +18,12 @@ export async function downloadAsPNG(elementId, filename = 'carnet') {
 
     try {
         const canvas = await html2canvas(element, {
-            backgroundColor: null,
+            backgroundColor: null, // Transparente
             scale: 3,
             useCORS: true,
             allowTaint: true,
             imageTimeout: 0,
-            logging: true,
+            logging: false,
             width: 500,
             height: 600,
             windowWidth: 500,
@@ -37,12 +37,15 @@ export async function downloadAsPNG(elementId, filename = 'carnet') {
             onclone: (clonedDoc) => {
                 const clonedElement = clonedDoc.getElementById(elementId);
                 if (clonedElement) {
-                    // Forzar visibilidad y dimensiones
-                    clonedElement.style.display = 'block';
+                    // El wrapper externo debe ser transparente
+                    clonedElement.style.display = 'flex';
+                    clonedElement.style.justifyContent = 'center';
+                    clonedElement.style.alignItems = 'center';
                     clonedElement.style.width = '500px';
                     clonedElement.style.height = '600px';
                     clonedElement.style.margin = '0';
-                    clonedElement.style.padding = '24px';
+                    clonedElement.style.padding = '0';
+                    clonedElement.style.backgroundColor = 'transparent';
                     
                     // Asegurar que todos los elementos hijos sean visibles
                     const allElements = clonedElement.querySelectorAll('*');
