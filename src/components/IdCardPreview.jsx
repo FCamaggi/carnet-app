@@ -185,14 +185,14 @@ export default function IdCardPreview({ participant }) {
 
           {/* Info Cards - Espaciado compacto */}
           <div className="space-y-2.5 bg-white/10 backdrop-blur-sm rounded-xl p-3">
-                        {nickname && (
+            {nickname && (
               <div className="flex items-start gap-2.5">
                 <span className="text-base flex-shrink-0">😎</span>
                 <div className="flex-1 min-w-0">
-                  <p className="text-xs font-semibold opacity-80 mb-0.5">APODO</p>
-                  <p className="text-sm leading-snug break-words">
-                    {nickname}
+                  <p className="text-xs font-semibold opacity-80 mb-0.5">
+                    APODO
                   </p>
+                  <p className="text-sm leading-snug break-words">{nickname}</p>
                 </div>
               </div>
             )}
@@ -201,7 +201,9 @@ export default function IdCardPreview({ participant }) {
               <div className="flex items-start gap-2.5">
                 <span className="text-base flex-shrink-0">🎯</span>
                 <div className="flex-1 min-w-0">
-                  <p className="text-xs font-semibold opacity-80 mb-0.5">HOBBY</p>
+                  <p className="text-xs font-semibold opacity-80 mb-0.5">
+                    HOBBY
+                  </p>
                   <p className="text-sm leading-snug break-words">{hobby}</p>
                 </div>
               </div>

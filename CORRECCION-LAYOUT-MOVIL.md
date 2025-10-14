@@ -5,15 +5,16 @@
 En dispositivos móviles, el header y la barra de progreso tenían un ancho diferente al del contenido principal (formulario y preview), causando un efecto visual desalineado y poco profesional.
 
 ### Causa:
+
 ```jsx
 // ANTES (❌ Inconsistente)
 <div className="container mx-auto px-4 py-8">
   {/* Header - sin restricción de ancho */}
   <div className="text-center mb-8">...</div>
-  
+
   {/* Progress Bar - max-w-4xl */}
   <div className="max-w-4xl mx-auto mb-8">...</div>
-  
+
   {/* Main Content - max-w-6xl */}
   <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">...</div>
 </div>
@@ -32,10 +33,10 @@ Unificar todo el contenido bajo el mismo `max-w-6xl` en el contenedor principal:
 <div className="container mx-auto px-4 py-8 max-w-6xl">
   {/* Header - usa el max-w-6xl del padre */}
   <div className="text-center mb-8">...</div>
-  
+
   {/* Progress Bar - usa el max-w-6xl del padre */}
   <div className="mb-8">...</div>
-  
+
   {/* Main Content - usa el max-w-6xl del padre */}
   <div className="grid md:grid-cols-2 gap-8">...</div>
 </div>
@@ -48,24 +49,30 @@ Unificar todo el contenido bajo el mismo `max-w-6xl` en el contenedor principal:
 ## 🎯 Cambios Específicos
 
 ### 1. Contenedor Principal
+
 ```diff
 - <div className="container mx-auto px-4 py-8">
 + <div className="container mx-auto px-4 py-8 max-w-6xl">
 ```
+
 **Efecto**: Establece un ancho máximo de 1152px para todo el contenido
 
 ### 2. Barra de Progreso
+
 ```diff
 - <div className="max-w-4xl mx-auto mb-8">
 + <div className="mb-8">
 ```
+
 **Efecto**: Elimina la restricción individual, hereda el ancho del contenedor padre
 
 ### 3. Grid Principal
+
 ```diff
 - <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
 + <div className="grid md:grid-cols-2 gap-8">
 ```
+
 **Efecto**: Elimina la restricción individual, hereda el ancho del contenedor padre
 
 ---
@@ -73,19 +80,21 @@ Unificar todo el contenido bajo el mismo `max-w-6xl` en el contenedor principal:
 ## 📐 Anchos por Dispositivo
 
 ### Móvil (< 768px):
+
 ```
 Ancho efectivo: 100vw - 32px (padding)
 = Ancho de pantalla menos padding horizontal
 
 Todos los elementos:
 ✅ Header
-✅ Progress Bar  
+✅ Progress Bar
 ✅ Formulario
 ✅ Preview
 = MISMO ANCHO (full width con padding consistente)
 ```
 
 ### Tablet (768px - 1152px):
+
 ```
 Ancho efectivo: 100vw - 32px (padding)
 hasta max 1152px
@@ -97,6 +106,7 @@ Grid en 2 columnas:
 ```
 
 ### Desktop (> 1152px):
+
 ```
 Ancho efectivo: 1152px (max-w-6xl)
 centrado horizontalmente
@@ -134,21 +144,25 @@ Grid en 2 columnas:
 ## 💡 Ventajas de Esta Solución
 
 ### 1. **Consistencia Visual**
+
 - ✅ Todo el contenido tiene el mismo ancho
 - ✅ No hay saltos o desalineaciones
 - ✅ Se ve profesional en todos los dispositivos
 
 ### 2. **Código Más Limpio**
+
 - ✅ Un solo punto de control (`max-w-6xl`)
 - ✅ Menos clases repetidas
 - ✅ Más fácil de mantener
 
 ### 3. **Responsive por Diseño**
+
 - ✅ Móvil: Full width con padding
 - ✅ Tablet: Full width hasta 1152px
 - ✅ Desktop: Máximo 1152px centrado
 
 ### 4. **Mejor UX Móvil**
+
 - ✅ No hay elementos que sobresalgan
 - ✅ Todo está perfectamente alineado
 - ✅ Scroll suave sin saltos horizontales
@@ -158,6 +172,7 @@ Grid en 2 columnas:
 ## 📱 Testing en Diferentes Dispositivos
 
 ### iPhone (375px):
+
 ```
 ✅ Header: 343px width (375 - 32 padding)
 ✅ Progress: 343px width
@@ -167,6 +182,7 @@ Grid en 2 columnas:
 ```
 
 ### iPad (768px):
+
 ```
 ✅ Header: 736px width (768 - 32 padding)
 ✅ Progress: 736px width
@@ -176,6 +192,7 @@ Grid en 2 columnas:
 ```
 
 ### Desktop (1920px):
+
 ```
 ✅ Header: 1152px width (max-w-6xl)
 ✅ Progress: 1152px width
@@ -220,6 +237,7 @@ dist/assets/index-DFARb-M_.js   438.71 kB
 ## 🎯 Resultado Final
 
 ### Antes (❌):
+
 ```
 ┌─────────────────────────┐
 │   Header (centrado)     │ ← Ancho sin restricción
@@ -236,6 +254,7 @@ dist/assets/index-DFARb-M_.js   438.71 kB
 ```
 
 ### Ahora (✅):
+
 ```
 ┌───────────────────────────┐
 │     Header (6xl)          │ ← Mismo ancho

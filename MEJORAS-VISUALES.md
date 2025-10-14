@@ -3,6 +3,7 @@
 ## ✨ Mejoras Implementadas
 
 ### 1. 📸 Foto Más Grande
+
 **Antes:** 128x128px (w-32 h-32)
 **Ahora:** 192x192px (w-48 h-48)
 
@@ -21,8 +22,9 @@ La foto del participante ahora es **50% más grande**, ocupando más protagonism
 Se agregó un diseño de fondo con múltiples elementos decorativos:
 
 #### Elementos del patrón:
+
 - ✨ **Puntos radiales**: Patrón de puntos distribuidos uniformemente
-- ⭕ **Círculos decorativos**: 
+- ⭕ **Círculos decorativos**:
   - Círculo superior derecho (128px)
   - Círculo inferior izquierdo (96px)
   - Círculo lateral izquierdo (80px)
@@ -33,11 +35,13 @@ Se agregó un diseño de fondo con múltiples elementos decorativos:
 ```jsx
 <div className="absolute inset-0 opacity-10">
   {/* Patrón de puntos */}
-  <div style={{
-    backgroundImage: `radial-gradient(circle at 20px 20px, white 2px, transparent 2px)`,
-    backgroundSize: '40px 40px'
-  }} />
-  
+  <div
+    style={{
+      backgroundImage: `radial-gradient(circle at 20px 20px, white 2px, transparent 2px)`,
+      backgroundSize: '40px 40px',
+    }}
+  />
+
   {/* Círculos decorativos */}
   <div className="w-32 h-32 rounded-full border-4 border-white/30" />
   <div className="w-24 h-24 rounded-full border-4 border-white/30" />
@@ -51,11 +55,13 @@ Se integró el logo del evento en el header del carnet:
 
 ```jsx
 <div className="flex justify-center items-center gap-2 mb-2">
-  <img 
-    src="/logo.png" 
-    alt="Logo" 
+  <img
+    src="/logo.png"
+    alt="Logo"
     className="h-8 w-8 object-contain"
-    onError={(e) => { e.target.style.display = 'none' }}
+    onError={(e) => {
+      e.target.style.display = 'none';
+    }}
   />
   <p className="text-xs font-semibold tracking-wider opacity-90">
     CAMAGGI GAMES
@@ -64,6 +70,7 @@ Se integró el logo del evento en el header del carnet:
 ```
 
 **Características:**
+
 - ✅ Tamaño: 32x32px (h-8 w-8)
 - ✅ Posición: Al lado del texto "CAMAGGI GAMES"
 - ✅ Manejo de errores: Se oculta automáticamente si no existe el archivo
@@ -72,11 +79,13 @@ Se integró el logo del evento en el header del carnet:
 ### 4. 🎭 Mejoras Visuales Adicionales
 
 #### Sombras y efectos:
+
 - **Foto**: Sombra XL para mayor profundidad (`shadow-xl`)
 - **Nombre**: Drop shadow para mejor legibilidad (`drop-shadow-lg`)
 - **Fondo del carnet**: Overflow hidden para recortar decoraciones
 
 #### Layout optimizado:
+
 - **Contenedor relativo**: Para posicionamiento absoluto del patrón
 - **Z-index**: Contenido principal sobre el patrón decorativo
 - **Flex layout**: Distribución vertical optimizada del contenido
@@ -113,12 +122,14 @@ Se integró el logo del evento en el header del carnet:
 ## 🎨 Comparación Visual
 
 ### Antes:
+
 - Foto pequeña (128x128px)
 - Fondo plano con gradiente
 - Sin logo
 - Diseño minimalista
 
 ### Ahora:
+
 - Foto grande (192x192px) ✨
 - Patrón decorativo de fondo 🎯
 - Logo del evento integrado 🏆
@@ -127,10 +138,12 @@ Se integró el logo del evento en el header del carnet:
 ## 📊 Impacto
 
 ### Dimensiones del archivo:
+
 - **CSS**: 17.63 kB (antes: 15.13 kB) - +2.5 kB
 - **Motivo**: Estilos adicionales para el patrón decorativo
 
 ### Performance:
+
 - ✅ Sin impacto significativo
 - ✅ Patrón con CSS puro (no imágenes)
 - ✅ Logo optimizado (debe ser PNG pequeño)
@@ -171,6 +184,7 @@ Si el archivo no existe, el logo simplemente no se muestra (failsafe implementad
 ## ✅ Estado
 
 **IMPLEMENTADO Y PROBADO**
+
 - ✅ Foto más grande (192x192px)
 - ✅ Patrón decorativo de fondo
 - ✅ Logo del evento integrado

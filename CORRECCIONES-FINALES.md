@@ -3,11 +3,13 @@
 ## ✅ Problemas Corregidos
 
 ### 1. **Iniciales Descentradas** ❌ → ✅
+
 **Problema:** Las iniciales se veían desplazadas hacia abajo en el círculo de la foto.
 
 **Causa:** El `flex` y `items-center justify-center` estaban aplicados en el mismo div que tenía `overflow-hidden`.
 
 **Solución:**
+
 ```jsx
 // ANTES (❌ Mal)
 <div className="w-40 h-40 ... flex items-center justify-center overflow-hidden">
@@ -29,11 +31,13 @@
 ---
 
 ### 2. **Texto Cortado** ❌ → ✅
+
 **Problema:** Todo el texto se veía cortado, solo se mostraba la parte superior.
 
 **Causa:** Clase `truncate` cortaba el texto a una sola línea con "..."
 
 **Solución:**
+
 ```jsx
 // ANTES (❌ Cortado)
 <p className="text-xs leading-tight truncate">{hobby}</p>
@@ -43,6 +47,7 @@
 ```
 
 **Cambios aplicados:**
+
 - `truncate` → `break-words` (permite múltiples líneas)
 - `leading-tight` → `leading-snug` (mejor espaciado)
 - Mensaje: añadido `line-clamp-3` (máximo 3 líneas)
@@ -54,6 +59,7 @@
 ## 📋 Clases CSS Cambiadas
 
 ### Foto sin imagen (iniciales):
+
 ```diff
 - flex items-center justify-center overflow-hidden
 + overflow-hidden
@@ -61,6 +67,7 @@
 ```
 
 ### Textos de información:
+
 ```diff
 Hobby, Orgullo, Palabra favorita:
 - text-xs leading-tight truncate
@@ -74,6 +81,7 @@ Mensaje:
 ## 🎯 Comportamiento Actual
 
 ### Iniciales:
+
 ```
 ✅ Centradas vertical y horizontalmente
 ✅ Tamaño: text-5xl (48px)
@@ -81,6 +89,7 @@ Mensaje:
 ```
 
 ### Textos:
+
 ```
 ✅ Hobby: Texto completo visible (máx 50 chars)
 ✅ Orgullo: Texto completo visible (máx 50 chars)
@@ -89,6 +98,7 @@ Mensaje:
 ```
 
 ### Espaciado:
+
 ```
 leading-snug = line-height: 1.375
 Mejor que leading-tight (1.25)
@@ -119,24 +129,28 @@ Peor que leading-normal (1.5)
 ### Con límites actuales:
 
 **Hobby (50 chars):**
+
 ```
 "Jugar videojuegos y leer libros de fantasía"
 ✅ Se muestra completo en 2-3 líneas
 ```
 
 **Orgullo (50 chars):**
+
 ```
 "Graduarme con honores de la universidad"
 ✅ Se muestra completo en 2 líneas
 ```
 
 **Palabra favorita (30 chars):**
+
 ```
 "Perseverancia y dedicación"
 ✅ Se muestra completo en 1-2 líneas
 ```
 
 **Mensaje (80 chars):**
+
 ```
 "¡Feliz cumpleaños! Que este día esté lleno de alegría, risas y buenos momentos"
 ✅ Se muestra completo en 3 líneas
@@ -157,12 +171,14 @@ flex-shrink-0    /* No se encoge (para emojis) */
 ## ✅ Verificación Visual
 
 ### Iniciales:
+
 - [ ] Abrir app sin foto
 - [ ] Verificar que las iniciales estén centradas
 - [ ] Probar con 1 inicial (A) y 2 iniciales (AB)
 - [ ] Confirmar que se ven completas
 
 ### Textos:
+
 - [ ] Escribir texto en cada campo
 - [ ] Verificar que TODO el texto sea visible
 - [ ] Confirmar que no hay scroll
@@ -204,6 +220,7 @@ dist/assets/index-CmW6eRWd.js   438.72 kB
 ## 📱 Resultado Final
 
 ### Con foto:
+
 ```
 ✅ Foto se muestra centrada y completa
 ✅ Tamaño: 160x160px
@@ -211,6 +228,7 @@ dist/assets/index-CmW6eRWd.js   438.72 kB
 ```
 
 ### Sin foto (iniciales):
+
 ```
 ✅ Iniciales centradas perfectamente
 ✅ Tamaño grande y visible (text-5xl)
@@ -218,6 +236,7 @@ dist/assets/index-CmW6eRWd.js   438.72 kB
 ```
 
 ### Textos:
+
 ```
 ✅ Todos los campos visibles completamente
 ✅ Sin truncado, sin "..." innecesarios

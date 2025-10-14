@@ -1,36 +1,33 @@
-import html2canvas from 'html2canvas';
+import { domToPng } from 'modern-screenshot';
 
 export async function downloadAsPNG(elementId, filename = 'carnet') {
     const element = document.getElementById(elementId);
     if (!element) return;
 
-    // Guardar estilos originales
-    const originalWidth = element.style.width;
-    const originalHeight = element.style.height;
-    
-    // Forzar dimensiones fijas para la exportación
-    element.style.width = '500px';
-    element.style.height = '500px';
-
     try {
-        const canvas = await html2canvas(element, {
-            backgroundColor: null,
-            scale: 3, // Mayor escala para mejor calidad (1500x1500px final)
-            useCORS: true,
-            width: 500,
-            height: 500,
-            logging: false,
-            allowTaint: true,
-            imageTimeout: 0,
-            windowWidth: 500,
-            windowHeight: 500,
+        // Obtener las dimensiones reales del elemento
+        const rect = element.getBoundingClientRect();
+        
+        // Configuración optimizada para modern-screenshot
+        const dataUrl = await domToPng(element, {
+            quality: 1.0,
+            scale: 3, // Alta resolución: 1500x1500px
+            width: rect.width, // Usar el ancho real del elemento
+            height: rect.height, // Usar el alto real del elemento
+            // Opciones adicionales para mejor calidad
+            debug: false,
+            features: {
+                // Deshabilitar clonación de iframes
+                removeControlCharacter: true,
+            }
         });
 
-        // Convertir canvas a blob
-        const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png', 1.0));
-        
+        // Convertir dataUrl a blob
+        const response = await fetch(dataUrl);
+        const blob = await response.blob();
+
         // Crear el archivo
-        const file = new File([blob], `${filename}.png`, { 
+        const file = new File([blob], `${filename}.png`, {
             type: 'image/png',
             lastModified: Date.now()
         });
@@ -72,17 +69,13 @@ export async function downloadAsPNG(elementId, filename = 'carnet') {
                 console.log('Error al compartir:', shareError.name, shareError.message);
             }
         }
-        
+
         // Fallback: descarga tradicional
         console.log('Usando descarga tradicional');
         fallbackDownload(blob, filename);
     } catch (error) {
         console.error('Error al exportar:', error);
         alert('Error al descargar la imagen');
-    } finally {
-        // Restaurar dimensiones originales
-        element.style.width = originalWidth;
-        element.style.height = originalHeight;
     }
 }
 
