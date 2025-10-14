@@ -18,13 +18,12 @@ export async function downloadAsPNG(elementId, filename = 'carnet') {
 
     try {
         const canvas = await html2canvas(element, {
-            backgroundColor: '#ffffff',
+            backgroundColor: null,
             scale: 3,
             useCORS: true,
-            allowTaint: false,
-            foreignObjectRendering: true,
+            allowTaint: true,
             imageTimeout: 0,
-            logging: false,
+            logging: true,
             width: 500,
             height: 600,
             windowWidth: 500,
@@ -33,14 +32,26 @@ export async function downloadAsPNG(elementId, filename = 'carnet') {
             y: 0,
             scrollX: 0,
             scrollY: 0,
-            // Mejoras para captura de estilos complejos
+            foreignObjectRendering: false,
+            // Asegurar que capture correctamente
             onclone: (clonedDoc) => {
                 const clonedElement = clonedDoc.getElementById(elementId);
                 if (clonedElement) {
+                    // Forzar visibilidad y dimensiones
+                    clonedElement.style.display = 'block';
                     clonedElement.style.width = '500px';
                     clonedElement.style.height = '600px';
-                    clonedElement.style.transform = 'scale(1)';
-                    clonedElement.style.position = 'relative';
+                    clonedElement.style.margin = '0';
+                    clonedElement.style.padding = '24px';
+                    
+                    // Asegurar que todos los elementos hijos sean visibles
+                    const allElements = clonedElement.querySelectorAll('*');
+                    allElements.forEach(el => {
+                        const computed = window.getComputedStyle(el);
+                        if (computed.display === 'none') {
+                            el.style.display = 'block';
+                        }
+                    });
                 }
             }
         });
