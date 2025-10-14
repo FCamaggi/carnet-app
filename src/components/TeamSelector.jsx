@@ -7,11 +7,10 @@ export default function TeamSelector({ onSelectTeam }) {
         <h1 className="text-4xl md:text-5xl font-bold text-center mb-4 text-gray-800">
           Crea tu Carnet
         </h1>
-        <p className="text-center text-gray-600 mb-2 text-lg">
-          Camaggi Games
-        </p>
+        <p className="text-center text-gray-600 mb-2 text-lg">Camaggi Games</p>
         <p className="text-center text-gray-500 mb-8">
-          Selecciona tu equipo y completa los campos. Podrás descargar tu carnet cuando termines.
+          Selecciona tu equipo y completa los campos. Podrás descargar tu carnet
+          cuando termines.
         </p>
 
         <div className="flex flex-col md:flex-row gap-4 justify-center">

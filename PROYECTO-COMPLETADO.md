@@ -7,11 +7,13 @@ Se ha creado exitosamente una aplicación web completa para crear carnets digita
 ## 🎯 Funcionalidades Implementadas
 
 ✅ **Selección de Equipo**
+
 - Pantalla de bienvenida atractiva
 - Botones para elegir Equipo Azul o Rojo
 - Cambio dinámico de tema según equipo
 
 ✅ **Formulario Completo**
+
 - Campo de nombre (obligatorio, máx. 40 caracteres)
 - Hobby (opcional, máx. 140 caracteres)
 - Orgullo (opcional, máx. 140 caracteres)
@@ -21,6 +23,7 @@ Se ha creado exitosamente una aplicación web completa para crear carnets digita
 - Contador de caracteres
 
 ✅ **Upload de Foto**
+
 - Subida desde dispositivo
 - Validación de tipo (JPEG/PNG)
 - Validación de tamaño (máx. 5MB)
@@ -28,6 +31,7 @@ Se ha creado exitosamente una aplicación web completa para crear carnets digita
 - Placeholder con iniciales si no hay foto
 
 ✅ **Vista Previa en Tiempo Real**
+
 - Diseño de carnet moderno con gradientes
 - Actualización instantánea al escribir
 - Diseño diferenciado por equipo
@@ -35,27 +39,32 @@ Se ha creado exitosamente una aplicación web completa para crear carnets digita
 - ID único generado
 
 ✅ **Barra de Progreso**
+
 - Indicador visual de campos completados
 - Animación suave
 - Color según equipo
 
 ✅ **Exportación**
+
 - Descarga como PNG (alta calidad)
 - Exportación a JSON
 - Nombres de archivo personalizados
 - Toast de confirmación
 
 ✅ **Funcionalidad de Reinicio**
+
 - Botón para limpiar todos los datos
 - Confirmación antes de borrar
 
 ✅ **Diseño Responsive**
+
 - Funciona en móviles y desktop
 - Grid adaptativo
 - Botones táctiles grandes
 - Layout optimizado para cada dispositivo
 
 ✅ **UX Optimizada**
+
 - Interfaz intuitiva
 - Feedback visual
 - Transiciones suaves
@@ -97,14 +106,17 @@ carnet-app/
 ## 🎨 Características Visuales
 
 ### Equipo Azul
+
 - Gradiente: #0f62fe → #2aa4ff
 - Tema coherente en todo el diseño
 
 ### Equipo Rojo
+
 - Gradiente: #ff4d4f → #ff9a8b
 - Tema coherente en todo el diseño
 
 ### Elementos de Diseño
+
 - Bordes redondeados modernos
 - Sombras suaves
 - Transparencias y blur effects
@@ -114,6 +126,7 @@ carnet-app/
 ## 🚀 Estado del Proyecto
 
 ✅ **Build Exitoso**
+
 ```
 dist/index.html                   0.46 kB
 dist/assets/index-CoTW6Xe_.css    4.91 kB
@@ -128,12 +141,14 @@ dist/assets/index-CoYAP9F_.js   410.11 kB
 ## 📱 Testing
 
 ### Navegadores Soportados
+
 - ✅ Chrome/Edge (Chromium)
 - ✅ Firefox
 - ✅ Safari (desktop y móvil)
 - ✅ Chrome/Safari móvil
 
 ### Dispositivos
+
 - ✅ Desktop (1920x1080 y superiores)
 - ✅ Laptop (1366x768)
 - ✅ Tablet (768x1024)
@@ -142,13 +157,16 @@ dist/assets/index-CoYAP9F_.js   410.11 kB
 ## 🎯 Próximos Pasos Recomendados
 
 1. **Probar la aplicación localmente**
+
    ```bash
    cd /home/fabrizio/code/cumpleaños/actividades/Identificacion/carnet-app
    npm run dev
    ```
+
    Abre http://localhost:5173
 
 2. **Deploy a Netlify**
+
    - Opción rápida: Arrastrar carpeta `dist` a netlify.com/drop
    - O seguir la guía en `DEPLOY.md`
 

@@ -11,11 +11,13 @@ La aplicación se mostraba sin estilos (HTML básico) porque:
 ## ✅ Solución Aplicada
 
 ### 1. Desinstalación de paquetes problemáticos
+
 ```bash
 npm uninstall tailwindcss @tailwindcss/postcss
 ```
 
 ### 2. Instalación de versión estable
+
 ```bash
 npm install -D tailwindcss@3.4.17 postcss autoprefixer
 ```
@@ -23,26 +25,29 @@ npm install -D tailwindcss@3.4.17 postcss autoprefixer
 ### 3. Configuración correcta de PostCSS
 
 **Antes (❌ Incorrecto):**
+
 ```javascript
 export default {
   plugins: {
     '@tailwindcss/postcss': {},
     autoprefixer: {},
   },
-}
+};
 ```
 
 **Después (✅ Correcto):**
+
 ```javascript
 export default {
   plugins: {
     tailwindcss: {},
     autoprefixer: {},
   },
-}
+};
 ```
 
 ### 4. Limpieza de cache
+
 ```bash
 rm -rf node_modules/.vite dist
 npm run build
@@ -51,21 +56,25 @@ npm run build
 ## 📊 Resultados
 
 ### Antes del fix:
+
 - CSS generado: **4.91 kB** (sin estilos de Tailwind)
 - Apariencia: HTML básico sin formato
 
 ### Después del fix:
+
 - CSS generado: **15.13 kB** (con todos los estilos de Tailwind)
 - Apariencia: Diseño completo con gradientes, colores, spacing, etc.
 
 ## ✅ Verificación
 
 Ejecuta el script de verificación:
+
 ```bash
 bash verify-setup.sh
 ```
 
 Deberías ver:
+
 ```
 ✅ Tailwind CSS instalado
 ✅ tailwind.config.js existe
@@ -76,12 +85,14 @@ Deberías ver:
 ## 🎨 Ahora Deberías Ver
 
 ### Pantalla de Selección de Equipo:
+
 - ✅ Fondo con gradiente morado-rosa-naranja
 - ✅ Tarjeta blanca centrada con sombra
 - ✅ Botones azul y rojo con gradientes
 - ✅ Efectos hover y animaciones
 
 ### Pantalla del Formulario:
+
 - ✅ Barra de progreso con color del equipo
 - ✅ Formulario con campos estilizados
 - ✅ Vista previa del carnet con gradiente
@@ -91,6 +102,7 @@ Deberías ver:
 ## 🚀 Cómo Probar
 
 1. Asegúrate de que el servidor está corriendo:
+
    ```bash
    npm run dev
    ```
@@ -105,15 +117,18 @@ Deberías ver:
 ## 🔍 Si Aún No Ves Estilos
 
 1. **Recarga la página con cache limpio:**
+
    - Chrome/Edge: `Ctrl+Shift+R` (Linux/Windows) o `Cmd+Shift+R` (Mac)
    - Firefox: `Ctrl+F5`
 
 2. **Verifica la consola del navegador:**
+
    - Abre DevTools (F12)
    - Busca errores en la pestaña Console
    - Verifica que `index.css` se cargue en la pestaña Network
 
 3. **Reinicia el servidor:**
+
    ```bash
    # Detén el servidor (Ctrl+C)
    npm run dev

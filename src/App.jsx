@@ -31,7 +31,11 @@ function App() {
   };
 
   const handleReset = () => {
-    if (confirm('¿Estás seguro de que quieres reiniciar? Se perderán todos los datos.')) {
+    if (
+      confirm(
+        '¿Estás seguro de que quieres reiniciar? Se perderán todos los datos.'
+      )
+    ) {
       setParticipant({
         team: null,
         name: '',
@@ -50,7 +54,10 @@ function App() {
       return;
     }
 
-    await downloadAsPNG('id-card', `carnet-${participant.name.replace(/\s+/g, '-')}`);
+    await downloadAsPNG(
+      'id-card',
+      `carnet-${participant.name.replace(/\s+/g, '-')}`
+    );
     setShowToast(true);
     setTimeout(() => setShowToast(false), 3000);
   };
@@ -61,7 +68,10 @@ function App() {
       return;
     }
 
-    exportAsJSON(participant, `carnet-${participant.name.replace(/\s+/g, '-')}`);
+    exportAsJSON(
+      participant,
+      `carnet-${participant.name.replace(/\s+/g, '-')}`
+    );
   };
 
   // Calcular progreso
@@ -109,7 +119,9 @@ function App() {
         <div className="max-w-4xl mx-auto mb-8">
           <div className="flex items-center justify-between mb-2">
             <span className="text-sm font-medium text-gray-700">Progreso</span>
-            <span className="text-sm font-medium text-gray-700">{progress}%</span>
+            <span className="text-sm font-medium text-gray-700">
+              {progress}%
+            </span>
           </div>
           <div className="w-full bg-gray-200 rounded-full h-3">
             <div
@@ -125,9 +137,7 @@ function App() {
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
           {/* Form Section */}
           <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8">
-            <h2 className="text-2xl font-bold text-gray-800 mb-6">
-              Tus Datos
-            </h2>
+            <h2 className="text-2xl font-bold text-gray-800 mb-6">Tus Datos</h2>
 
             <PhotoUploader
               photo={participant.photo}

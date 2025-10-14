@@ -24,7 +24,8 @@ export default function IdCardPreview({ participant }) {
     <div className="flex justify-center items-center p-4">
       <div
         id="id-card"
-        className={`w-full max-w-md bg-gradient-to-br ${gradientClass} rounded-2xl shadow-2xl p-6 text-white`}
+        style={{ width: 400, height: 600 }}
+        className={`bg-gradient-to-br ${gradientClass} rounded-2xl shadow-2xl p-6 text-white flex flex-col justify-between`}
       >
         {/* Header */}
         <div className="text-center mb-4">

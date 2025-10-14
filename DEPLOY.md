@@ -3,12 +3,14 @@
 ## Opción 1: Deploy Directo (Más Rápido) 🎯
 
 ### Paso 1: Crear el build
+
 ```bash
 cd /home/fabrizio/code/cumpleaños/actividades/Identificacion/carnet-app
 npm run build
 ```
 
 ### Paso 2: Deploy con Netlify Drop
+
 1. Ve a [https://app.netlify.com/drop](https://app.netlify.com/drop)
 2. Arrastra la carpeta `dist` al área de drop
 3. ¡Listo! Tu sitio estará publicado en segundos
@@ -18,6 +20,7 @@ npm run build
 ## Opción 2: Netlify CLI 💻
 
 ### Instalación
+
 ```bash
 # Instalar Netlify CLI globalmente
 npm install -g netlify-cli
@@ -27,6 +30,7 @@ netlify login
 ```
 
 ### Deploy
+
 ```bash
 # Desde la carpeta del proyecto
 cd /home/fabrizio/code/cumpleaños/actividades/Identificacion/carnet-app
@@ -39,6 +43,7 @@ netlify deploy --prod
 ```
 
 Cuando te pregunte:
+
 - **Publish directory:** escribe `dist` y presiona Enter
 
 ---
@@ -46,6 +51,7 @@ Cuando te pregunte:
 ## Opción 3: GitHub + Netlify (Recomendado para actualizaciones) 🔄
 
 ### Paso 1: Subir a GitHub
+
 ```bash
 cd /home/fabrizio/code/cumpleaños/actividades/Identificacion/carnet-app
 
@@ -63,6 +69,7 @@ git push -u origin main
 ```
 
 ### Paso 2: Conectar con Netlify
+
 1. Ve a [https://app.netlify.com](https://app.netlify.com)
 2. Click en "Add new site" > "Import an existing project"
 3. Selecciona "GitHub"
@@ -74,6 +81,7 @@ git push -u origin main
 6. Click en "Deploy site"
 
 ### Ventajas
+
 - ✅ Auto-deploy en cada push
 - ✅ Preview de Pull Requests
 - ✅ Rollback fácil
@@ -86,6 +94,7 @@ git push -u origin main
 Netlify te dará una URL como: `https://random-name-123.netlify.app`
 
 ### Personalizar el Nombre
+
 1. Ve a "Site settings" en el dashboard de Netlify
 2. Click en "Change site name"
 3. Elige un nombre único: `camaggi-games-carnet.netlify.app`
@@ -95,6 +104,7 @@ Netlify te dará una URL como: `https://random-name-123.netlify.app`
 ## 🔧 Solución de Problemas
 
 ### Error: "Command not found: npm"
+
 ```bash
 # Asegúrate de tener Node.js instalado
 node --version
@@ -102,6 +112,7 @@ npm --version
 ```
 
 ### Error en el build
+
 ```bash
 # Limpia node_modules y reinstala
 rm -rf node_modules package-lock.json
@@ -110,6 +121,7 @@ npm run build
 ```
 
 ### La app no carga imágenes
+
 - Asegúrate de que las imágenes estén en la carpeta `public/`
 - Usa rutas relativas en el código
 
@@ -118,6 +130,7 @@ npm run build
 ## 📱 Compartir la App
 
 Una vez deployada, comparte el link con los participantes:
+
 ```
 https://tu-sitio.netlify.app
 ```
