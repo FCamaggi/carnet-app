@@ -2,11 +2,16 @@ import React from 'react';
 
 export default function FormFields({ participant, onChange }) {
   const handleChange = (field, value) => {
-    // Limitar caracteres
-    if (value.length > 140 && field !== 'name') {
-      return;
-    }
-    if (field === 'name' && value.length > 40) {
+    // Limitar caracteres - reducido para que quepa mejor en el carnet
+    const limits = {
+      name: 40,
+      hobby: 50,
+      proud: 50,
+      favoriteWord: 30,
+      message: 80
+    };
+    
+    if (value.length > limits[field]) {
       return;
     }
     onChange(field, value);
@@ -51,7 +56,7 @@ export default function FormFields({ participant, onChange }) {
           className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
         />
         <p className="text-xs text-gray-500 mt-1">
-          {participant.hobby.length}/140 caracteres
+          {participant.hobby.length}/50 caracteres
         </p>
       </div>
 
@@ -71,7 +76,7 @@ export default function FormFields({ participant, onChange }) {
           className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
         />
         <p className="text-xs text-gray-500 mt-1">
-          {participant.proud.length}/140 caracteres
+          {participant.proud.length}/50 caracteres
         </p>
       </div>
 
@@ -91,7 +96,7 @@ export default function FormFields({ participant, onChange }) {
           className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
         />
         <p className="text-xs text-gray-500 mt-1">
-          {participant.favoriteWord.length}/140 caracteres
+          {participant.favoriteWord.length}/30 caracteres
         </p>
       </div>
 
@@ -111,7 +116,7 @@ export default function FormFields({ participant, onChange }) {
           className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
         />
         <p className="text-xs text-gray-500 mt-1">
-          {participant.message.length}/140 caracteres
+          {participant.message.length}/80 caracteres
         </p>
       </div>
     </div>
