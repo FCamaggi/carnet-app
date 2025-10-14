@@ -4,59 +4,26 @@ export async function downloadAsPNG(elementId, filename = 'carnet') {
     const element = document.getElementById(elementId);
     if (!element) return;
 
-    // Forzar dimensiones fijas para la exportación
+    // Guardar estilos originales
     const originalWidth = element.style.width;
     const originalHeight = element.style.height;
-    const originalTransform = element.style.transform;
     
+    // Forzar dimensiones fijas para la exportación
     element.style.width = '500px';
     element.style.height = '500px';
-    element.style.transform = 'scale(1)';
-
-    // Esperar un momento para que el navegador actualice el DOM
-    await new Promise(resolve => setTimeout(resolve, 100));
 
     try {
         const canvas = await html2canvas(element, {
-            backgroundColor: null, // Transparente
-            scale: 3, // 1500x1500px final
+            backgroundColor: null,
+            scale: 3, // Mayor escala para mejor calidad (1500x1500px final)
             useCORS: true,
-            allowTaint: true,
-            imageTimeout: 0,
-            logging: false,
             width: 500,
             height: 500,
+            logging: false,
+            allowTaint: true,
+            imageTimeout: 0,
             windowWidth: 500,
             windowHeight: 500,
-            x: 0,
-            y: 0,
-            scrollX: 0,
-            scrollY: 0,
-            foreignObjectRendering: false,
-            // Asegurar que capture correctamente
-            onclone: (clonedDoc) => {
-                const clonedElement = clonedDoc.getElementById(elementId);
-                if (clonedElement) {
-                    // El wrapper externo debe ser transparente
-                    clonedElement.style.display = 'flex';
-                    clonedElement.style.justifyContent = 'center';
-                    clonedElement.style.alignItems = 'center';
-                    clonedElement.style.width = '500px';
-                    clonedElement.style.height = '500px';
-                    clonedElement.style.margin = '0';
-                    clonedElement.style.padding = '0';
-                    clonedElement.style.backgroundColor = 'transparent';
-                    
-                    // Asegurar que todos los elementos hijos sean visibles
-                    const allElements = clonedElement.querySelectorAll('*');
-                    allElements.forEach(el => {
-                        const computed = window.getComputedStyle(el);
-                        if (computed.display === 'none') {
-                            el.style.display = 'block';
-                        }
-                    });
-                }
-            }
         });
 
         // Convertir canvas a blob
@@ -116,7 +83,6 @@ export async function downloadAsPNG(elementId, filename = 'carnet') {
         // Restaurar dimensiones originales
         element.style.width = originalWidth;
         element.style.height = originalHeight;
-        element.style.transform = originalTransform;
     }
 }
 
