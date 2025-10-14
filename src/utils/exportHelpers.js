@@ -7,21 +7,21 @@ export async function downloadAsPNG(elementId, filename = 'carnet') {
     // Forzar dimensiones fijas para la exportación
     const originalWidth = element.style.width;
     const originalHeight = element.style.height;
-    element.style.width = '400px';
+    element.style.width = '500px';
     element.style.height = '600px';
 
     try {
         const canvas = await html2canvas(element, {
             backgroundColor: null,
-            scale: 3, // Mayor escala para mejor calidad (1200x1800px final)
+            scale: 3, // Mayor escala para mejor calidad (1500x1800px final)
             useCORS: true,
-            width: 400,
+            width: 500,
             height: 600,
             logging: false,
             allowTaint: true,
             imageTimeout: 0,
             // Configuración para evitar compresión y mantener calidad
-            windowWidth: 400,
+            windowWidth: 500,
             windowHeight: 600,
         });
 

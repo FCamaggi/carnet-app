@@ -5,12 +5,12 @@ export default function FormFields({ participant, onChange }) {
     // Limitar caracteres - reducido para que quepa mejor en el carnet
     const limits = {
       name: 40,
+      nickname: 20,
       hobby: 50,
       proud: 50,
       favoriteWord: 30,
-      message: 80
     };
-    
+
     if (value.length > limits[field]) {
       return;
     }
@@ -31,12 +31,32 @@ export default function FormFields({ participant, onChange }) {
           type="text"
           value={participant.name}
           onChange={(e) => handleChange('name', e.target.value)}
-          placeholder="Tu nombre completo"
+          placeholder="Nombre y apellido"
           className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           required
         />
         <p className="text-xs text-gray-500 mt-1">
           {participant.name.length}/40 caracteres
+        </p>
+      </div>
+
+      <div>
+        <label
+          htmlFor="nickname"
+          className="block text-sm font-medium text-gray-700 mb-1"
+        >
+          Apodo
+        </label>
+        <input
+          id="nickname"
+          type="text"
+          value={participant.nickname}
+          onChange={(e) => handleChange('nickname', e.target.value)}
+          placeholder="Tu apodo o sobrenombre"
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+        />
+        <p className="text-xs text-gray-500 mt-1">
+          {participant.nickname.length}/20 caracteres
         </p>
       </div>
 
@@ -97,26 +117,6 @@ export default function FormFields({ participant, onChange }) {
         />
         <p className="text-xs text-gray-500 mt-1">
           {participant.favoriteWord.length}/30 caracteres
-        </p>
-      </div>
-
-      <div>
-        <label
-          htmlFor="message"
-          className="block text-sm font-medium text-gray-700 mb-1"
-        >
-          Mensaje para el anfitrión
-        </label>
-        <textarea
-          id="message"
-          value={participant.message}
-          onChange={(e) => handleChange('message', e.target.value)}
-          placeholder="Escribe un mensaje especial... 🧐"
-          rows="3"
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
-        />
-        <p className="text-xs text-gray-500 mt-1">
-          {participant.message.length}/80 caracteres
         </p>
       </div>
     </div>

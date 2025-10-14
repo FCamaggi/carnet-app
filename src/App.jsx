@@ -9,10 +9,10 @@ function App() {
   const [participant, setParticipant] = useState({
     team: null,
     name: '',
+    nickname: '',
     hobby: '',
     proud: '',
     favoriteWord: '',
-    message: '',
     photo: null,
   });
 
@@ -39,10 +39,10 @@ function App() {
       setParticipant({
         team: null,
         name: '',
+        nickname: '',
         hobby: '',
         proud: '',
         favoriteWord: '',
-        message: '',
         photo: null,
       });
     }
@@ -104,28 +104,27 @@ function App() {
         </div>
       )}
 
-      <div className="container mx-auto px-4 py-8">
+      <div className="w-full max-w-6xl mx-auto px-4 py-6 md:py-8">
         {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-2">
+        <div className="text-center mb-6 md:mb-8">
+          <h1 className="text-2xl md:text-4xl font-bold text-gray-800 mb-2">
             Crea tu Carnet - Camaggi Games
           </h1>
-          <p className="text-gray-600">
-            {participant.team === 'blue' ? '🔵 Equipo Azul' : '🔴 Equipo Rojo'}
-          </p>
         </div>
 
         {/* Progress Bar */}
-        <div className="max-w-4xl mx-auto mb-8">
+        <div className="mb-6 md:mb-8">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm font-medium text-gray-700">Progreso</span>
-            <span className="text-sm font-medium text-gray-700">
+            <span className="text-xs md:text-sm font-medium text-gray-700">
+              Progreso
+            </span>
+            <span className="text-xs md:text-sm font-medium text-gray-700">
               {progress}%
             </span>
           </div>
-          <div className="w-full bg-gray-200 rounded-full h-3">
+          <div className="w-full bg-gray-200 rounded-full h-2 md:h-3">
             <div
-              className={`h-3 rounded-full transition-all duration-500 ${
+              className={`h-2 md:h-3 rounded-full transition-all duration-500 ${
                 participant.team === 'blue' ? 'bg-blue-500' : 'bg-red-500'
               }`}
               style={{ width: `${progress}%` }}
@@ -134,10 +133,12 @@ function App() {
         </div>
 
         {/* Main Content */}
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
           {/* Form Section */}
-          <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8">
-            <h2 className="text-2xl font-bold text-gray-800 mb-6">Tus Datos</h2>
+          <div className="bg-white rounded-xl md:rounded-2xl shadow-lg p-4 md:p-8">
+            <h2 className="text-xl md:text-2xl font-bold text-gray-800 mb-4 md:mb-6">
+              Tus Datos
+            </h2>
 
             <PhotoUploader
               photo={participant.photo}
@@ -189,8 +190,8 @@ function App() {
           </div>
 
           {/* Preview Section */}
-          <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8">
-            <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">
+          <div className="bg-white rounded-xl md:rounded-2xl shadow-lg p-4 md:p-8">
+            <h2 className="text-xl md:text-2xl font-bold text-gray-800 mb-4 md:mb-6 text-center">
               Vista Previa
             </h2>
             <IdCardPreview participant={participant} />
