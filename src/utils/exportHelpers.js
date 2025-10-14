@@ -7,22 +7,42 @@ export async function downloadAsPNG(elementId, filename = 'carnet') {
     // Forzar dimensiones fijas para la exportación
     const originalWidth = element.style.width;
     const originalHeight = element.style.height;
+    const originalTransform = element.style.transform;
+    
     element.style.width = '500px';
     element.style.height = '600px';
+    element.style.transform = 'scale(1)';
+
+    // Esperar un momento para que el navegador actualice el DOM
+    await new Promise(resolve => setTimeout(resolve, 100));
 
     try {
         const canvas = await html2canvas(element, {
-            backgroundColor: null,
-            scale: 3, // Mayor escala para mejor calidad (1500x1800px final)
+            backgroundColor: '#ffffff',
+            scale: 3,
             useCORS: true,
+            allowTaint: false,
+            foreignObjectRendering: true,
+            imageTimeout: 0,
+            logging: false,
             width: 500,
             height: 600,
-            logging: false,
-            allowTaint: true,
-            imageTimeout: 0,
-            // Configuración para evitar compresión y mantener calidad
             windowWidth: 500,
             windowHeight: 600,
+            x: 0,
+            y: 0,
+            scrollX: 0,
+            scrollY: 0,
+            // Mejoras para captura de estilos complejos
+            onclone: (clonedDoc) => {
+                const clonedElement = clonedDoc.getElementById(elementId);
+                if (clonedElement) {
+                    clonedElement.style.width = '500px';
+                    clonedElement.style.height = '600px';
+                    clonedElement.style.transform = 'scale(1)';
+                    clonedElement.style.position = 'relative';
+                }
+            }
         });
 
         // Convertir canvas a blob
@@ -82,6 +102,7 @@ export async function downloadAsPNG(elementId, filename = 'carnet') {
         // Restaurar dimensiones originales
         element.style.width = originalWidth;
         element.style.height = originalHeight;
+        element.style.transform = originalTransform;
     }
 }
 
