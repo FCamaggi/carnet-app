@@ -10,7 +10,7 @@ export async function downloadAsPNG(elementId, filename = 'carnet') {
     const originalTransform = element.style.transform;
     
     element.style.width = '500px';
-    element.style.height = '600px';
+    element.style.height = '500px';
     element.style.transform = 'scale(1)';
 
     // Esperar un momento para que el navegador actualice el DOM
@@ -19,15 +19,15 @@ export async function downloadAsPNG(elementId, filename = 'carnet') {
     try {
         const canvas = await html2canvas(element, {
             backgroundColor: null, // Transparente
-            scale: 3,
+            scale: 3, // 1500x1500px final
             useCORS: true,
             allowTaint: true,
             imageTimeout: 0,
             logging: false,
             width: 500,
-            height: 600,
+            height: 500,
             windowWidth: 500,
-            windowHeight: 600,
+            windowHeight: 500,
             x: 0,
             y: 0,
             scrollX: 0,
@@ -42,7 +42,7 @@ export async function downloadAsPNG(elementId, filename = 'carnet') {
                     clonedElement.style.justifyContent = 'center';
                     clonedElement.style.alignItems = 'center';
                     clonedElement.style.width = '500px';
-                    clonedElement.style.height = '600px';
+                    clonedElement.style.height = '500px';
                     clonedElement.style.margin = '0';
                     clonedElement.style.padding = '0';
                     clonedElement.style.backgroundColor = 'transparent';

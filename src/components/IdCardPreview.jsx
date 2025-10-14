@@ -21,8 +21,8 @@ export default function IdCardPreview({ participant }) {
     <div className="flex justify-center items-center p-4">
       <div
         id="id-card"
-        style={{ width: 500, height: 600 }}
-        className={`relative bg-gradient-to-br ${gradientClass} rounded-2xl shadow-2xl p-6 text-white overflow-hidden`}
+        style={{ width: 500, height: 500 }}
+        className={`relative bg-gradient-to-br ${gradientClass} shadow-2xl p-6 text-white overflow-hidden`}
       >
         {/* Patrón geométrico moderno en el fondo */}
         <svg
@@ -155,11 +155,11 @@ export default function IdCardPreview({ participant }) {
         {/* Contenido principal */}
         <div className="relative z-10 h-full flex flex-col">
           {/* Header con logo */}
-          <div className="text-center mb-4"></div>
+          <div className="text-center mb-3"></div>
 
-          {/* Photo Section - MÁS GRANDE */}
-          <div className="flex justify-center mb-5">
-            <div className="w-44 h-44 rounded-full bg-white/20 backdrop-blur-sm overflow-hidden border-4 border-white shadow-xl relative">
+          {/* Photo Section */}
+          <div className="flex justify-center mb-4">
+            <div className="w-36 h-36 rounded-full bg-white/20 backdrop-blur-sm overflow-hidden border-4 border-white shadow-xl relative">
               {photo ? (
                 <img
                   src={photo.dataUrl}
@@ -177,20 +177,20 @@ export default function IdCardPreview({ participant }) {
           </div>
 
           {/* Name */}
-          <div className="text-center mb-5">
-            <h3 className="text-2xl font-bold drop-shadow-lg leading-tight">
+          <div className="text-center mb-4">
+            <h3 className="text-xl font-bold drop-shadow-lg leading-tight">
               {name || 'Tu Nombre'}
             </h3>
           </div>
 
-          {/* Info Cards - Mejor espaciado */}
-          <div className="space-y-3 bg-white/10 backdrop-blur-sm rounded-xl p-4">
-            {nickname && (
-              <div className="flex items-start gap-3">
-                <span className="text-lg flex-shrink-0">😎</span>
+          {/* Info Cards - Espaciado compacto */}
+          <div className="space-y-2.5 bg-white/10 backdrop-blur-sm rounded-xl p-3">
+                        {nickname && (
+              <div className="flex items-start gap-2.5">
+                <span className="text-base flex-shrink-0">😎</span>
                 <div className="flex-1 min-w-0">
-                  <p className="text-xs font-semibold opacity-80 mb-1">APODO</p>
-                  <p className="text-sm leading-relaxed break-words">
+                  <p className="text-xs font-semibold opacity-80 mb-0.5">APODO</p>
+                  <p className="text-sm leading-snug break-words">
                     {nickname}
                   </p>
                 </div>
@@ -198,35 +198,35 @@ export default function IdCardPreview({ participant }) {
             )}
 
             {hobby && (
-              <div className="flex items-start gap-3">
-                <span className="text-lg flex-shrink-0">🎯</span>
+              <div className="flex items-start gap-2.5">
+                <span className="text-base flex-shrink-0">🎯</span>
                 <div className="flex-1 min-w-0">
-                  <p className="text-xs font-semibold opacity-80 mb-1">HOBBY</p>
-                  <p className="text-sm leading-relaxed break-words">{hobby}</p>
+                  <p className="text-xs font-semibold opacity-80 mb-0.5">HOBBY</p>
+                  <p className="text-sm leading-snug break-words">{hobby}</p>
                 </div>
               </div>
             )}
 
             {proud && (
-              <div className="flex items-start gap-3">
-                <span className="text-lg flex-shrink-0">⭐</span>
+              <div className="flex items-start gap-2.5">
+                <span className="text-base flex-shrink-0">⭐</span>
                 <div className="flex-1 min-w-0">
-                  <p className="text-xs font-semibold opacity-80 mb-1">
+                  <p className="text-xs font-semibold opacity-80 mb-0.5">
                     ORGULLO
                   </p>
-                  <p className="text-sm leading-relaxed break-words">{proud}</p>
+                  <p className="text-sm leading-snug break-words">{proud}</p>
                 </div>
               </div>
             )}
 
             {favoriteWord && (
-              <div className="flex items-start gap-3">
-                <span className="text-lg flex-shrink-0">💬</span>
+              <div className="flex items-start gap-2.5">
+                <span className="text-base flex-shrink-0">💬</span>
                 <div className="flex-1 min-w-0">
-                  <p className="text-xs font-semibold opacity-80 mb-1">
-                    PALABRA O FRASE FAVORITA
+                  <p className="text-xs font-semibold opacity-80 mb-0.5">
+                    PALABRA FAVORITA
                   </p>
-                  <p className="text-sm leading-relaxed italic break-words">
+                  <p className="text-sm leading-snug italic break-words">
                     "{favoriteWord}"
                   </p>
                 </div>
@@ -241,8 +241,8 @@ export default function IdCardPreview({ participant }) {
           </div>
 
           {/* Footer */}
-          <div className="mt-auto pt-4 text-center">
-            <p className="text-sm opacity-70">
+          <div className="mt-auto pt-3 text-center">
+            <p className="text-xs opacity-70">
               ID: {Date.now().toString(36).toUpperCase()}
             </p>
           </div>
