@@ -25,12 +25,32 @@ export async function downloadAsPNG(elementId, filename = 'carnet') {
             windowHeight: 600,
         });
 
-        // Usar PNG sin compresión para máxima calidad
-        const url = canvas.toDataURL('image/png', 1.0);
-        const link = document.createElement('a');
-        link.download = `${filename}.png`;
-        link.href = url;
-        link.click();
+        // Convertir canvas a blob
+        const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png', 1.0));
+        
+        // Detectar si es móvil y si soporta Web Share API
+        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        const canShare = navigator.canShare && navigator.canShare({ files: [new File([blob], 'test.png', { type: 'image/png' })] });
+        
+        if (isMobile && canShare) {
+            // En móviles: usar Web Share API para compartir/guardar
+            const file = new File([blob], `${filename}.png`, { type: 'image/png' });
+            try {
+                await navigator.share({
+                    files: [file],
+                    title: 'Mi Carnet',
+                    text: 'Carnet de Camaggi Games'
+                });
+            } catch (shareError) {
+                // Si el usuario cancela el share, hacer download tradicional
+                if (shareError.name !== 'AbortError') {
+                    fallbackDownload(blob, filename);
+                }
+            }
+        } else {
+            // En desktop o si no soporta share: descarga tradicional
+            fallbackDownload(blob, filename);
+        }
     } catch (error) {
         console.error('Error al exportar:', error);
         alert('Error al descargar la imagen');
@@ -39,6 +59,16 @@ export async function downloadAsPNG(elementId, filename = 'carnet') {
         element.style.width = originalWidth;
         element.style.height = originalHeight;
     }
+}
+
+// Función auxiliar para descarga tradicional
+function fallbackDownload(blob, filename) {
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.download = `${filename}.png`;
+    link.href = url;
+    link.click();
+    URL.revokeObjectURL(url);
 }
 
 export function exportAsJSON(data, filename = 'carnet') {

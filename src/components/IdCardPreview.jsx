@@ -56,14 +56,38 @@ export default function IdCardPreview({ participant }) {
               height="80"
               patternUnits="userSpaceOnUse"
             >
-              <circle cx="40" cy="40" r="15" stroke="white" strokeWidth="1.5" fill="none" opacity="0.2"/>
-              <circle cx="40" cy="40" r="25" stroke="white" strokeWidth="1" fill="none" opacity="0.15"/>
-              <circle cx="40" cy="40" r="35" stroke="white" strokeWidth="0.5" fill="none" opacity="0.1"/>
+              <circle
+                cx="40"
+                cy="40"
+                r="15"
+                stroke="white"
+                strokeWidth="1.5"
+                fill="none"
+                opacity="0.2"
+              />
+              <circle
+                cx="40"
+                cy="40"
+                r="25"
+                stroke="white"
+                strokeWidth="1"
+                fill="none"
+                opacity="0.15"
+              />
+              <circle
+                cx="40"
+                cy="40"
+                r="35"
+                stroke="white"
+                strokeWidth="0.5"
+                fill="none"
+                opacity="0.1"
+              />
             </pattern>
             {/* Gradiente radial para efecto de profundidad */}
             <radialGradient id="spotlight" cx="50%" cy="20%">
-              <stop offset="0%" stopColor="white" stopOpacity="0.15"/>
-              <stop offset="100%" stopColor="white" stopOpacity="0"/>
+              <stop offset="0%" stopColor="white" stopOpacity="0.15" />
+              <stop offset="100%" stopColor="white" stopOpacity="0" />
             </radialGradient>
           </defs>
           <rect width="100%" height="100%" fill="url(#hexagons)" />
@@ -74,47 +98,59 @@ export default function IdCardPreview({ participant }) {
         {/* Decoración con formas geométricas modernas */}
         <div className="absolute top-0 right-0 w-48 h-48 rounded-full bg-white/10 transform translate-x-20 -translate-y-20 blur-3xl"></div>
         <div className="absolute bottom-0 left-0 w-40 h-40 rounded-full bg-white/10 transform -translate-x-16 translate-y-16 blur-2xl"></div>
-        
+
         {/* Puntos decorativos distribuidos por toda la tarjeta */}
         {/* Esquina superior derecha */}
         <div className="absolute top-8 right-12 w-3 h-3 rounded-full bg-white/35"></div>
         <div className="absolute top-16 right-8 w-2 h-2 rounded-full bg-white/30"></div>
         <div className="absolute top-12 right-20 w-2.5 h-2.5 rounded-full bg-white/25"></div>
         <div className="absolute top-20 right-16 w-1.5 h-1.5 rounded-full bg-white/40"></div>
-        
+
         {/* Esquina superior izquierda */}
         <div className="absolute top-10 left-10 w-2.5 h-2.5 rounded-full bg-white/30"></div>
         <div className="absolute top-16 left-16 w-2 h-2 rounded-full bg-white/35"></div>
         <div className="absolute top-24 left-12 w-1.5 h-1.5 rounded-full bg-white/25"></div>
-        
+
         {/* Lado derecho medio */}
         <div className="absolute top-1/3 right-8 w-3 h-3 rounded-full bg-white/40"></div>
         <div className="absolute top-1/2 right-12 w-2 h-2 rounded-full bg-white/35"></div>
         <div className="absolute top-2/3 right-10 w-2.5 h-2.5 rounded-full bg-white/30"></div>
-        <div className="absolute" style={{top: '45%', right: '20px'}}><div className="w-1.5 h-1.5 rounded-full bg-white/25"></div></div>
-        
+        <div className="absolute" style={{ top: '45%', right: '20px' }}>
+          <div className="w-1.5 h-1.5 rounded-full bg-white/25"></div>
+        </div>
+
         {/* Lado izquierdo medio */}
         <div className="absolute top-1/3 left-12 w-2 h-2 rounded-full bg-white/35"></div>
         <div className="absolute top-1/2 left-8 w-2.5 h-2.5 rounded-full bg-white/30"></div>
         <div className="absolute top-2/3 left-14 w-2 h-2 rounded-full bg-white/40"></div>
-        <div className="absolute" style={{top: '55%', left: '24px'}}><div className="w-1.5 h-1.5 rounded-full bg-white/25"></div></div>
-        
+        <div className="absolute" style={{ top: '55%', left: '24px' }}>
+          <div className="w-1.5 h-1.5 rounded-full bg-white/25"></div>
+        </div>
+
         {/* Esquina inferior derecha */}
         <div className="absolute bottom-12 right-10 w-2.5 h-2.5 rounded-full bg-white/35"></div>
         <div className="absolute bottom-16 right-14 w-2 h-2 rounded-full bg-white/30"></div>
         <div className="absolute bottom-20 right-8 w-3 h-3 rounded-full bg-white/40"></div>
         <div className="absolute bottom-24 right-16 w-1.5 h-1.5 rounded-full bg-white/25"></div>
-        
+
         {/* Esquina inferior izquierda */}
         <div className="absolute bottom-10 left-10 w-2.5 h-2.5 rounded-full bg-white/30"></div>
         <div className="absolute bottom-16 left-14 w-2 h-2 rounded-full bg-white/35"></div>
         <div className="absolute bottom-20 left-8 w-2 h-2 rounded-full bg-white/25"></div>
-        
+
         {/* Puntos centrales dispersos */}
-        <div className="absolute" style={{top: '30%', left: '45%'}}><div className="w-1.5 h-1.5 rounded-full bg-white/20"></div></div>
-        <div className="absolute" style={{top: '60%', left: '75%'}}><div className="w-2 h-2 rounded-full bg-white/25"></div></div>
-        <div className="absolute" style={{top: '40%', left: '20%'}}><div className="w-1.5 h-1.5 rounded-full bg-white/30"></div></div>
-        <div className="absolute" style={{top: '70%', left: '30%'}}><div className="w-2 h-2 rounded-full bg-white/25"></div></div>
+        <div className="absolute" style={{ top: '30%', left: '45%' }}>
+          <div className="w-1.5 h-1.5 rounded-full bg-white/20"></div>
+        </div>
+        <div className="absolute" style={{ top: '60%', left: '75%' }}>
+          <div className="w-2 h-2 rounded-full bg-white/25"></div>
+        </div>
+        <div className="absolute" style={{ top: '40%', left: '20%' }}>
+          <div className="w-1.5 h-1.5 rounded-full bg-white/30"></div>
+        </div>
+        <div className="absolute" style={{ top: '70%', left: '30%' }}>
+          <div className="w-2 h-2 rounded-full bg-white/25"></div>
+        </div>
 
         {/* Contenido principal */}
         <div className="relative z-10 h-full flex flex-col">
@@ -154,7 +190,9 @@ export default function IdCardPreview({ participant }) {
                 <span className="text-lg flex-shrink-0">😎</span>
                 <div className="flex-1 min-w-0">
                   <p className="text-xs font-semibold opacity-80 mb-1">APODO</p>
-                  <p className="text-sm leading-relaxed break-words">{nickname}</p>
+                  <p className="text-sm leading-relaxed break-words">
+                    {nickname}
+                  </p>
                 </div>
               </div>
             )}
@@ -186,7 +224,7 @@ export default function IdCardPreview({ participant }) {
                 <span className="text-lg flex-shrink-0">💬</span>
                 <div className="flex-1 min-w-0">
                   <p className="text-xs font-semibold opacity-80 mb-1">
-                    PALABRA FAVORITA
+                    PALABRA O FRASE FAVORITA
                   </p>
                   <p className="text-sm leading-relaxed italic break-words">
                     "{favoriteWord}"

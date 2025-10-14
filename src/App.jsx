@@ -78,10 +78,10 @@ function App() {
   const calculateProgress = () => {
     const fields = [
       participant.name,
+      participant.nickname,
       participant.hobby,
       participant.proud,
       participant.favoriteWord,
-      participant.message,
       participant.photo,
     ];
     const completed = fields.filter(Boolean).length;
@@ -163,7 +163,9 @@ function App() {
                     : 'bg-gray-300 cursor-not-allowed'
                 }`}
               >
-                📥 Descargar PNG
+                {/iPhone|iPad|iPod|Android/i.test(navigator.userAgent) 
+                  ? '📤 Compartir Carnet' 
+                  : '📥 Descargar PNG'}
               </button>
 
               <div className="flex gap-3">
