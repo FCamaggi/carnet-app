@@ -209,8 +209,9 @@ function App() {
               onClick={() => setShowEasterEgg(true)}
               className="inline-block w-1 h-1 rounded-full bg-gray-300 ml-1 cursor-pointer hover:bg-gray-400 transition-colors"
               style={{ opacity: 0.3 }}
-              title="❤️"
+              title=""
             />
+            ❤️
           </p>
         </div>
       </div>
