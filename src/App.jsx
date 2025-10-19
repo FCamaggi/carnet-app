@@ -17,6 +17,7 @@ function App() {
   });
 
   const [showToast, setShowToast] = useState(false);
+  const [showEasterEgg, setShowEasterEgg] = useState(false);
 
   const handleSelectTeam = (team) => {
     setParticipant({ ...participant, team });
@@ -202,9 +203,55 @@ function App() {
 
         {/* Footer */}
         <div className="text-center mt-12 text-gray-500 text-sm">
-          <p>© 2025 Camaggi Games · Hecho con ❤️</p>
+          <p>
+            © 2025 Camaggi Games · Hecho con ❤️
+            <span 
+              onClick={() => setShowEasterEgg(true)}
+              className="inline-block w-1 h-1 rounded-full bg-gray-300 ml-1 cursor-pointer hover:bg-gray-400 transition-colors"
+              style={{ opacity: 0.3 }}
+              title=""
+            />
+          </p>
         </div>
       </div>
+
+      {/* Easter Egg Modal */}
+      {showEasterEgg && (
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
+          onClick={() => setShowEasterEgg(false)}
+        >
+          <div 
+            className="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full text-center animate-bounce"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="text-6xl mb-4">🎉</div>
+            <h2 className="text-3xl font-bold text-gray-800 mb-4">
+              ¡Easter Egg Encontrado!
+            </h2>
+            <div className="bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xl font-bold py-3 px-6 rounded-lg mb-4">
+              +3 PUNTOS
+            </div>
+            <p className="text-gray-600 mb-6">
+              ¡Felicitaciones! Has encontrado el easter egg secreto.
+              <br />
+              Toma un screenshot de esta pantalla y envíalo para reclamar tus puntos.
+            </p>
+            <div className="bg-gray-100 rounded-lg p-4 mb-6">
+              <p className="text-xs text-gray-500 mb-1">ID de Verificación</p>
+              <code className="text-lg font-mono font-bold text-gray-800" id="easter-egg-code-2025">
+                EGG-CAMAGGI-2025-X7K9
+              </code>
+            </div>
+            <button
+              onClick={() => setShowEasterEgg(false)}
+              className="bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold py-2 px-8 rounded-lg hover:from-purple-600 hover:to-pink-600 transition-all duration-200"
+            >
+              Cerrar
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

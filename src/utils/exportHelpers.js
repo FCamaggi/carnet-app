@@ -7,7 +7,7 @@ export async function downloadAsPNG(elementId, filename = 'carnet') {
     try {
         // Obtener las dimensiones reales del elemento
         const rect = element.getBoundingClientRect();
-        
+
         // Configuración optimizada para modern-screenshot
         const dataUrl = await domToPng(element, {
             quality: 1.0,

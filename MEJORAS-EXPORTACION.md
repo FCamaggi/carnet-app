@@ -25,30 +25,33 @@ Se reemplazó `html2canvas` por `modern-screenshot` por las siguientes razones:
 
 ```javascript
 const dataUrl = await domToPng(element, {
-    quality: 1.0,           // Máxima calidad
-    scale: 3,               // 3x resolución (1500x1500px final)
-    width: 500,             // Ancho fijo del elemento
-    height: 500,            // Alto fijo del elemento
-    style: {
-        width: '500px',     // Forzar dimensiones consistentes
-        height: '500px',
-    }
+  quality: 1.0, // Máxima calidad
+  scale: 3, // 3x resolución (1500x1500px final)
+  width: 500, // Ancho fijo del elemento
+  height: 500, // Alto fijo del elemento
+  style: {
+    width: '500px', // Forzar dimensiones consistentes
+    height: '500px',
+  },
 });
 ```
 
 ### 3. Beneficios
 
 #### Calidad Visual
+
 - **Fondo sólido natural**: El gradiente del carnet se captura completamente, eliminando espacios transparentes
 - **Bordes perfectos**: Los bordes redondeados se ven correctamente sin artefactos blancos
 - **Mejor resolución**: Escala 3x produce imágenes de 1500x1500px nítidas en cualquier pantalla
 
 #### Compatibilidad
+
 - **Redes sociales**: La imagen se ve perfecta en Instagram, WhatsApp, Facebook, Twitter
 - **Compartir nativo**: Funciona correctamente con la API de compartir del navegador
 - **Sin sorpresas**: Lo que ves en pantalla es exactamente lo que se exporta
 
 #### Performance
+
 - **Más rápida**: La exportación es notablemente más veloz
 - **Menor consumo de memoria**: Mejor manejo de recursos
 - **Bundle más pequeño**: Reduce el tamaño final de la aplicación
@@ -56,26 +59,28 @@ const dataUrl = await domToPng(element, {
 ## Cambios en el Código
 
 ### Antes (html2canvas)
+
 ```javascript
 import html2canvas from 'html2canvas';
 
 const canvas = await html2canvas(element, {
-    backgroundColor: null,  // ❌ Crea transparencia no deseada
-    scale: 3,
-    useCORS: true,
-    // ... muchas opciones necesarias
+  backgroundColor: null, // ❌ Crea transparencia no deseada
+  scale: 3,
+  useCORS: true,
+  // ... muchas opciones necesarias
 });
 ```
 
 ### Después (modern-screenshot)
+
 ```javascript
 import { domToPng } from 'modern-screenshot';
 
 const dataUrl = await domToPng(element, {
-    quality: 1.0,          // ✅ Captura el fondo natural del gradiente
-    scale: 3,
-    width: 500,
-    height: 500,
+  quality: 1.0, // ✅ Captura el fondo natural del gradiente
+  scale: 3,
+  width: 500,
+  height: 500,
 });
 ```
 
@@ -105,6 +110,7 @@ Si se desea optimizar aún más:
 ## Conclusión
 
 La migración a `modern-screenshot` resuelve completamente los problemas de:
+
 - ✅ Fondos blancos inesperados
 - ✅ Dimensiones incorrectas
 - ✅ Bordes redondeados con artefactos
