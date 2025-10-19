@@ -204,12 +204,12 @@ function App() {
         {/* Footer */}
         <div className="text-center mt-12 text-gray-500 text-sm">
           <p>
-            © 2025 Camaggi Games · Hecho con ❤️
+            © 2025 Camaggi Games · Hecho con 
             <span 
               onClick={() => setShowEasterEgg(true)}
               className="inline-block w-1 h-1 rounded-full bg-gray-300 ml-1 cursor-pointer hover:bg-gray-400 transition-colors"
               style={{ opacity: 0.3 }}
-              title=""
+              title="❤️"
             />
           </p>
         </div>
